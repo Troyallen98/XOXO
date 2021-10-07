@@ -177,9 +177,9 @@
 
 
 //9 col should be set false (cant be clicked)
-//when activated buttons are set to true and can be clicked
-//on click buttons log data and turns false
-//if button value is 0 then button is visible
+    //when activated buttons are set to true and can be clicked
+        //on click buttons log data and turns false
+    //if button value is 0 then button is visible
 // buttons inital value is 100
 //on click of go button, set button values to 0
 //if button value is anything else button is not visible
@@ -272,7 +272,8 @@ class sheet {
         btn.className = "mt-4 mb-1"
         pageRowColH2.innerText = "Ticky-Tacky-Toes";
         btn.innerText = "Go";
-
+        
+            
         body.appendChild(page)
         page.append(pageRow, gridRow, buttonRow);
         for (let i = 0; i < 9; i++) {
@@ -281,11 +282,12 @@ class sheet {
             gridCol.innerText = i;
             gridCol.id = i;
             console.log(gridCol.id);
-
+            num++;
             if (typeof gridCol[i] !== "number") {
                 gridCol[i] = 100;
-
+                    num++;
             }
+            num++;
             console.log(gridCol[i]);
             // 1. add event listener -> remove
             // 2. add onclick function g.onclick = myFunction(i)
@@ -298,17 +300,16 @@ class sheet {
         pageRow.append(pageRowCol);
         pageRowCol.append(pageRowColH2);
         buttonRow.append(buttonCol);
-        buttonCol.append(btn);
-    }
-       gobtn() {
         btn.addEventListener('click', function () {
             for (let i = 0; i < 9; i++) {
-                let start = gridCol[i].value - 100;
+                let start = document.getElementById(i).value - 100;
             }
-            return start;
+            console.log(start);
         })
-        console.log(start);
+        
+        buttonCol.append(btn);
     }
+  
 
 }
 
@@ -322,4 +323,5 @@ let mySheet = new sheet()
 
 
 mySheet.pageload()
+
 
