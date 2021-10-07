@@ -104,29 +104,29 @@
 // pageRowColH2.innerText = "Ticky-Tacky-Toes";
 // btn.innerText = "Go";
 
-// body.appendChild(page)
-// page.append(pageRow, gridRow, buttonRow);
-// for (let i = 0; i < 9; i++) {
-//     let gridCol = document.createElement('button');
-//     gridCol.className = "col-4 border border-danger"
-//     gridCol.innerText = i;
-//     gridCol.id = i;
-//     console.log(gridCol.id);
+                                // body.appendChild(page)
+                                // page.append(pageRow, gridRow, buttonRow);
+                                // for (let i = 0; i < 9; i++) {
+                                //     let gridCol = document.createElement('button');
+                                //     gridCol.className = "col-4 border border-danger"
+                                //     gridCol.innerText = i;
+                                //     gridCol.id = i;
+                                //     console.log(gridCol.id);
 
-//     if (typeof gridCol[i] !== "number") {
-//         gridCol[i] = 100;
-//     }
-//     console.log(gridCol[i]);
-//     // 1. add event listener -> remove
-//     // 2. add onclick function g.onclick = myFunction(i)
-//     // if statement elemten i is true
-//     // turn it false
-//     // 3. create "smart" class
-//     // let ele = new Tile(gridCol, i, myFunction) // pass in lots of data
+                                //     if (typeof gridCol[i] !== "number") {
+                                //         gridCol[i] = 100;
+                                //     }
+                                //     console.log(gridCol[i]);
+                                //     // 1. add event listener -> remove
+                                //     // 2. add onclick function g.onclick = myFunction(i)
+                                //     // if statement elemten i is true
+                                //     // turn it false
+                                //     // 3. create "smart" class
+                                //     // let ele = new Tile(gridCol, i, myFunction) // pass in lots of data
 
 
-//     gridRow.append(gridCol);
-// }
+                                //     gridRow.append(gridCol);
+                                // }
 // pageRow.append(pageRowCol);
 // pageRowCol.append(pageRowColH2);
 // buttonRow.append(buttonCol);
@@ -243,16 +243,47 @@
 // buttonRow.append(buttonCol);
 // buttonCol.append(btn);
 
-class sheet {
+
+
+
+class Model {
     constructor() {
 
-
     }
+    Columns(gridRow) {     
+                  let array = []          
+        for (let i = 0; i < 9; i++) {
+             
+            let gridCol = document.createElement('button');
+                gridCol.className = "col-4 border border-danger"
+                gridCol.innerText = i;
+                gridCol.id = i;
+                console.log(gridCol.id);
 
+                if (typeof gridCol[i] !== "number") {
+                    gridCol[i] = 100;
+                }
+                console.log(gridCol[i]);
+                                                    // 1. add event listener -> remove
+                                                    // 2. add onclick function g.onclick = myFunction(i)
+                                                    // if statement elemten i is true
+                                                    // turn it false
+                                                    // 3. create "smart" class
+                                                    // let ele = new Tile(gridCol, i, myFunction) // pass in lots of data
+                gridRow.append(gridCol);
+                array.push(gridCol);
+                console.log(array);
+        }
+    }
+}
+class Sheet {
+
+    constructor() {
+        this.column = new Model()
+    }
 
     pageload() {
         let body = document.body;
-
         let page = document.createElement('div');
         let pageRow = document.createElement('div');
         let pageRowCol = document.createElement('div');
@@ -261,7 +292,7 @@ class sheet {
         let buttonRow = document.createElement('div');
         let buttonCol = document.createElement('div');
         let btn = document.createElement('button');
-
+        
         page.className = "container text-center"
         pageRow.className = "row text-center"
         pageRowCol.className = "column"
@@ -270,56 +301,51 @@ class sheet {
         buttonRow.className = "row text-center"
         buttonCol.className = "col"
         btn.className = "mt-4 mb-1"
+
         pageRowColH2.innerText = "Ticky-Tacky-Toes";
         btn.innerText = "Go";
-        
-            
+
         body.appendChild(page)
         page.append(pageRow, gridRow, buttonRow);
-        for (let i = 0; i < 9; i++) {
-            let gridCol = document.createElement('button');
-            gridCol.className = "col-4 border border-danger"
-            gridCol.innerText = i;
-            gridCol.id = i;
-            console.log(gridCol.id);
-            num++;
-            if (typeof gridCol[i] !== "number") {
-                gridCol[i] = 100;
-                    num++;
-            }
-            num++;
-            console.log(gridCol[i]);
-            // 1. add event listener -> remove
-            // 2. add onclick function g.onclick = myFunction(i)
-            // if statement elemten i is true
-            // turn it false
-            // 3. create "smart" class
-            // let ele = new Tile(gridCol, i, myFunction) // pass in lots of data
-            gridRow.append(gridCol);
-        }
+        this.column.Columns(gridRow);
         pageRow.append(pageRowCol);
         pageRowCol.append(pageRowColH2);
         buttonRow.append(buttonCol);
-        btn.addEventListener('click', function () {
-            for (let i = 0; i < 9; i++) {
-                let start = document.getElementById(i).value - 100;
-            }
-            console.log(start);
-        })
-        
         buttonCol.append(btn);
     }
-  
-
+    //call my model 
 }
 
-class tiles {
-    constructor(value, disable, enabled) {
-
+class Tiles {
+    constructor() {
+        //this.event = new Sheet
     }
-}
 
-let mySheet = new sheet()
+
+}  
+    
+    
+    
+    //event listener for individual tile
+        //on click gridCol(value) - 100
+        //if grid clicked add 1 and 5 consecutively 
+        // for (let i=0; i <= 8; i++) {
+        //     if (i % 2 = 0) {
+        //         onclick -1;
+        //         col.innerText = O;
+        //     } else {
+        //         onclick + 1;
+        //         col.col.innerText = X;
+        //     }
+        // }
+
+
+
+    //event listener for go button
+        //when clicked tile values = 0
+
+
+let mySheet = new Sheet()
 
 
 mySheet.pageload()
